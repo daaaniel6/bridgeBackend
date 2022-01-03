@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+  <persistence-unit name="gt.edu.usac.cunoc.ingenieria.civil_bridges_jar_0.0.1-SNAPSHOTPU" transaction-type="RESOURCE_LOCAL">
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <class>gt.edu.usac.cunoc.ingenieria.civil.bridges.model.Pile</class>
+    <class>gt.edu.usac.cunoc.ingenieria.civil.bridges.model.ProtectionWorks</class>
+    <class>gt.edu.usac.cunoc.ingenieria.civil.bridges.model.Bridge</class>
+    <class>gt.edu.usac.cunoc.ingenieria.civil.bridges.model.Sensor</class>
+    <class>gt.edu.usac.cunoc.ingenieria.civil.bridges.model.BridgeInspector</class>
+    <class>gt.edu.usac.cunoc.ingenieria.civil.bridges.model.HandrailRailing</class>
+    <class>gt.edu.usac.cunoc.ingenieria.civil.bridges.model.RowWidthPile</class>
+    <class>gt.edu.usac.cunoc.ingenieria.civil.bridges.model.Scour</class>
+    <class>gt.edu.usac.cunoc.ingenieria.civil.bridges.model.Inspector</class>
+    <class>gt.edu.usac.cunoc.ingenieria.civil.bridges.model.Council</class>
+    <class>gt.edu.usac.cunoc.ingenieria.civil.bridges.model.Other</class>
+    <class>gt.edu.usac.cunoc.ingenieria.civil.bridges.model.SteelRow</class>
+    <class>gt.edu.usac.cunoc.ingenieria.civil.bridges.model.NonStructuralElements</class>
+    <class>gt.edu.usac.cunoc.ingenieria.civil.bridges.model.ConcreteRow</class>
+    <class>gt.edu.usac.cunoc.ingenieria.civil.bridges.model.Barrier</class>
+    <class>gt.edu.usac.cunoc.ingenieria.civil.bridges.model.Superstructure</class>
+    <class>gt.edu.usac.cunoc.ingenieria.civil.bridges.model.Comment</class>
+    <class>gt.edu.usac.cunoc.ingenieria.civil.bridges.model.Municipality</class>
+    <class>gt.edu.usac.cunoc.ingenieria.civil.bridges.model.ImageOther</class>
+    <class>gt.edu.usac.cunoc.ingenieria.civil.bridges.model.Departament</class>
+    <class>gt.edu.usac.cunoc.ingenieria.civil.bridges.model.Stapes</class>
+    <class>gt.edu.usac.cunoc.ingenieria.civil.bridges.model.SlabAccess</class>
+    <class>gt.edu.usac.cunoc.ingenieria.civil.bridges.model.Channel</class>
+    <class>gt.edu.usac.cunoc.ingenieria.civil.bridges.model.Blueprint</class>
+    <class>gt.edu.usac.cunoc.ingenieria.civil.bridges.model.Image</class>
+    <class>gt.edu.usac.cunoc.ingenieria.civil.bridges.model.Reading</class>
+    <class>gt.edu.usac.cunoc.ingenieria.civil.bridges.model.RowWidth</class>
+    <class>gt.edu.usac.cunoc.ingenieria.civil.bridges.model.SewerSystem</class>
+    <class>gt.edu.usac.cunoc.ingenieria.civil.bridges.model.BearingSlab</class>
+    <class>gt.edu.usac.cunoc.ingenieria.civil.bridges.model.Support</class>
+    <class>gt.edu.usac.cunoc.ingenieria.civil.bridges.model.Stretch</class>
+    <class>gt.edu.usac.cunoc.ingenieria.civil.bridges.model.RailingPosts</class>
+    <class>gt.edu.usac.cunoc.ingenieria.civil.bridges.model.GeneralData</class>
+    <properties>
+      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://18.220.202.154:3306/bridges?zeroDateTimeBehavior=CONVERT_TO_NULL"/>
+      <property name="javax.persistence.jdbc.user" value="danielgg"/>
+      <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
+      <property name="javax.persistence.jdbc.password" value="danielEPS3"/>
+    </properties>
+  </persistence-unit>
+</persistence>
