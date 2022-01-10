@@ -48,9 +48,9 @@ public class Departament implements Serializable {
     private String long1;
     @Column(name = "lat")
     private String lat;
-    //FIXED JSON ignore puede ser un dolor de cabeza
+    //FIXED: JSON ignore puede ser un dolor de cabeza
     
-    @JsonIgnore
+    //@JsonIgnore
     @OneToMany(mappedBy = "departamentDepartamentId")
     private List<Municipality> municipalityList;
     @JsonIgnore

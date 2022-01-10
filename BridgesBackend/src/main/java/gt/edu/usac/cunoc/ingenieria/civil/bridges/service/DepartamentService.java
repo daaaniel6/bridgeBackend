@@ -14,11 +14,17 @@ import org.springframework.data.domain.Pageable;
  *
  * @author daniel
  */
+
 public interface DepartamentService {
     public Iterable<Departament> findAll();
+
     public Page<Departament> findAll(Pageable pageable);
+
     public Optional<Departament> findById(Integer id);
+
     public Departament save(Departament departament);
+
     public void deleteById(Integer id);
+
     Departament listarPorId(Integer codigo);
 }

@@ -8,22 +8,28 @@ package gt.edu.usac.cunoc.ingenieria.civil.bridges.security.dto;
 import com.sun.istack.NotNull;
 import java.util.HashSet;
 import java.util.Set;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 
 /**
+ * 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aaaaaaaaaaaa
  *
  * @author daniel
  */
 public class NewUser {
-    @NotNull
+
+    @NotBlank
     private String name;
-    @NotNull
+
+    @NotBlank
     private String username;
-    //@Email
-    @NotNull
+
+    @Email
     private String email;
-    @NotNull
+
+    @NotBlank
     private String password;
-    
+
     private Set<String> roles = new HashSet<>();
 
     public String getName() {
@@ -65,6 +71,5 @@ public class NewUser {
     public void setRoles(Set<String> roles) {
         this.roles = roles;
     }
-    
-    
+
 }

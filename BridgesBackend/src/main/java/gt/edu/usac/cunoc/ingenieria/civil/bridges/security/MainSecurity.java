@@ -9,6 +9,7 @@ import gt.edu.usac.cunoc.ingenieria.civil.bridges.security.jwt.JwtEntryPoint;
 import gt.edu.usac.cunoc.ingenieria.civil.bridges.security.jwt.JwtTokenFilter;
 import gt.edu.usac.cunoc.ingenieria.civil.bridges.security.service.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -26,39 +27,45 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
  *
  * @author daniel
  */
-
 @Configuration
+//@EnableAutoConfiguration
 @EnableWebSecurity
-@EnableGlobalMethodSecurity(prePostEnabled = true)
-public class MainSecurity extends WebSecurityConfigurerAdapter{
+@EnableGlobalMethodSecurity(prePostEnabled = true,
+        securedEnabled = true,
+        jsr250Enabled = true)
+public class MainSecurity extends WebSecurityConfigurerAdapter {
+
     @Autowired
     UserDetailsServiceImpl userDetailsServiceImpl;
-    
+
     @Autowired
     JwtEntryPoint jwtEntryPoint;
-    
+
     @Bean
-    public JwtTokenFilter jwtTokenFilter(){
+    public JwtTokenFilter jwtTokenFilter() {
         return new JwtTokenFilter();
     }
-    
+
     @Bean
-    public PasswordEncoder passwordEncoder(){
+    public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
     @Override
-    protected void configure(HttpSecurity http) throws Exception {
+    public void configure(HttpSecurity http) throws Exception {
         http.cors()
                 .and().csrf().disable()
                 .authorizeRequests()
+                //.antMatchers("/api/departaments").hasAuthority("ROLE_ADMIN")
+                //.antMatchers("/api/**").access("hasAuthority('ROLE_ADMIN')")
+                //.antMatchers("/api/departaments").hasRole("ADMIN")
                 .antMatchers("/auth/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .exceptionHandling().authenticationEntryPoint(jwtEntryPoint)
                 .and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-        
+
         http.addFilterBefore(jwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
 
         //super.configure(http); //To change body of generated methods, choose Tools | Templates.
@@ -80,6 +87,5 @@ public class MainSecurity extends WebSecurityConfigurerAdapter{
         auth.userDetailsService(userDetailsServiceImpl).passwordEncoder(passwordEncoder());
         //super.configure(auth); //To change body of generated methods, choose Tools | Templates.
     }
-    
-    
+
 }
