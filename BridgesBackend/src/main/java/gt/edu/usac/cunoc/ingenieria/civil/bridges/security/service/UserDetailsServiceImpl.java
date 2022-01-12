@@ -24,10 +24,11 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     UserService UserService;
 
     @Override
-    public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
-        User user = UserService.getByUserName(userName).get();
+    public UserDetails loadUserByUsername(String usernameOrEmail) throws UsernameNotFoundException {
+        User user = UserService.getByUserNameOrEmail(usernameOrEmail).get();
         return PrincipalUser.build(user);
-//throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        // throw new UnsupportedOperationException("Not supported yet."); //To change
+        // body of generated methods, choose Tools | Templates.
     }
 
 }

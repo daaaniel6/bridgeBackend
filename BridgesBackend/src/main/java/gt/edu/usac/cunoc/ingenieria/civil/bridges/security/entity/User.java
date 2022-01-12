@@ -32,18 +32,19 @@ public class User {
     private String name;
     @NotNull
     @Column(unique = true)
-    private String  userName;
+    private String userName;
     @NotNull
     private String email;
     @NotNull
     private String password;
+    private String tokenPassword;
+    @NotNull
     @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name= "user_rol", joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "rol_id"))
-    private Set<Rol> roles = new HashSet<>(); 
-    
-    public User(){
-        
+    @JoinTable(name = "user_rol", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "rol_id"))
+    private Set<Rol> roles = new HashSet<>();
+
+    public User() {
+
     }
 
     public User(String name, String userName, String email, String password) {
@@ -93,6 +94,14 @@ public class User {
         this.password = password;
     }
 
+    public String getTokenPassword() {
+        return tokenPassword;
+    }
+
+    public void setTokenPassword(String tokenPassword) {
+        this.tokenPassword = tokenPassword;
+    }
+
     public Set<Rol> getRoles() {
         return roles;
     }
@@ -101,6 +110,4 @@ public class User {
         this.roles = roles;
     }
 
-    
-    
 }

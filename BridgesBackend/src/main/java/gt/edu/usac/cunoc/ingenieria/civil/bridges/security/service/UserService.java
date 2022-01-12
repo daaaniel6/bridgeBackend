@@ -21,20 +21,24 @@ import org.springframework.transaction.annotation.Transactional;
 public class UserService {
     @Autowired
     UserRepository userRepository;
-    
-    public Optional<User> getByUserName(String userName){
+
+    public Optional<User> getByUserName(String userName) {
         return userRepository.findByUserName(userName);
     }
-    
-    public boolean existsByUserName(String userName){
+
+    public Optional<User> getByUserNameOrEmail(String usernameOrEmail) {
+        return userRepository.findByUserNameOrEmail(usernameOrEmail, usernameOrEmail);
+    }
+
+    public boolean existsByUserName(String userName) {
         return userRepository.existsByUserName(userName);
     }
-    
-    public boolean existsByEmail(String email){
+
+    public boolean existsByEmail(String email) {
         return userRepository.existsByEmail(email);
     }
-    
-    public void save(User user){
+
+    public void save(User user) {
         userRepository.save(user);
     }
 }
