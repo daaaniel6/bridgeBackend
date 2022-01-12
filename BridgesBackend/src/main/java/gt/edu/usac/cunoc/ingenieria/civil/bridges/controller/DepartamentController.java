@@ -7,6 +7,7 @@ package gt.edu.usac.cunoc.ingenieria.civil.bridges.controller;
 
 import gt.edu.usac.cunoc.ingenieria.civil.bridges.model.Departament;
 import gt.edu.usac.cunoc.ingenieria.civil.bridges.service.DepartamentService;
+import io.swagger.annotations.ApiOperation;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -47,6 +48,7 @@ public class DepartamentController {
     @GetMapping
     // @PreAuthorize("hasRole('ADMIN')")
     // @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    @ApiOperation("Mustra la lista de departamentos")
     public ResponseEntity<List<Departament>> readAll() {
         System.out.println("llego hata aca");
         List<Departament> departaments = StreamSupport.stream(departamentService.findAll().spliterator(), false)

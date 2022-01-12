@@ -51,7 +51,8 @@ public class JwtProvider {
                 .setSubject(principalUser.getUsername())
                 .claim("roles", roles)
                 .setIssuedAt(new Date())
-                .setExpiration(new Date(new Date().getTime() + expiration ))
+                // 3600 seguods que es una hora
+                .setExpiration(new Date(new Date().getTime() + expiration * 180))
                 .signWith(SignatureAlgorithm.HS512, secret.getBytes())
                 .compact();
     }
@@ -77,17 +78,17 @@ public class JwtProvider {
         }
         return false;
     }
-    
-    public String refreshToken(JwtDto jwtDto) throws ParseException{
+
+    public String refreshToken(JwtDto jwtDto) throws ParseException {
         JWT jwt = JWTParser.parse(jwtDto.getToken());
         JWTClaimsSet claims = jwt.getJWTClaimsSet();
         String username = claims.getSubject();
-        List<String> roles = (List<String>)claims.getClaim("roles");
-        return  Jwts.builder()
+        List<String> roles = (List<String>) claims.getClaim("roles");
+        return Jwts.builder()
                 .setSubject(username)
                 .claim("roles", roles)
                 .setIssuedAt(new Date())
-                .setExpiration(new Date(new Date().getTime() + expiration ))
+                .setExpiration(new Date(new Date().getTime() + expiration * 180))
                 .signWith(SignatureAlgorithm.HS512, secret.getBytes())
                 .compact();
     }

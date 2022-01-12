@@ -25,14 +25,13 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 /**
  * 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
+ * 
  * @author daniel
  */
 @Configuration
-//@EnableAutoConfiguration
+// @EnableAutoConfiguration
 @EnableWebSecurity
-@EnableGlobalMethodSecurity(prePostEnabled = true,
-        securedEnabled = true,
-        jsr250Enabled = true)
+@EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true, jsr250Enabled = true)
 public class MainSecurity extends WebSecurityConfigurerAdapter {
 
     @Autowired
@@ -56,10 +55,17 @@ public class MainSecurity extends WebSecurityConfigurerAdapter {
         http.cors()
                 .and().csrf().disable()
                 .authorizeRequests()
-                //.antMatchers("/api/departaments").hasAuthority("ROLE_ADMIN")
-                //.antMatchers("/api/**").access("hasAuthority('ROLE_ADMIN')")
-                //.antMatchers("/api/departaments").hasRole("ADMIN")
-                .antMatchers("/auth/**").permitAll()
+                // .antMatchers("/api/departaments").hasAuthority("ROLE_ADMIN")
+                // .antMatchers("/api/**").access("hasAuthority('ROLE_ADMIN')")
+                // .antMatchers("/api/departaments").hasRole("ADMIN")
+                .antMatchers(
+                        "/auth/**",
+                        "/v2/api-docs/**",
+                        "/swagger-ui/**",
+                        "/swagger-resources/**",
+                        "/configuration/**"
+
+                ).permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .exceptionHandling().authenticationEntryPoint(jwtEntryPoint)
@@ -68,24 +74,26 @@ public class MainSecurity extends WebSecurityConfigurerAdapter {
 
         http.addFilterBefore(jwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
 
-        //super.configure(http); //To change body of generated methods, choose Tools | Templates.
+        // super.configure(http); //To change body of generated methods, choose Tools |
+        // Templates.
     }
 
     @Override
     protected AuthenticationManager authenticationManager() throws Exception {
-        return super.authenticationManager(); //To change body of generated methods, choose Tools | Templates.
+        return super.authenticationManager(); // To change body of generated methods, choose Tools | Templates.
     }
 
     @Bean
     @Override
     public AuthenticationManager authenticationManagerBean() throws Exception {
-        return super.authenticationManagerBean(); //To change body of generated methods, choose Tools | Templates.
+        return super.authenticationManagerBean(); // To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsServiceImpl).passwordEncoder(passwordEncoder());
-        //super.configure(auth); //To change body of generated methods, choose Tools | Templates.
+        // super.configure(auth); //To change body of generated methods, choose Tools |
+        // Templates.
     }
 
 }
