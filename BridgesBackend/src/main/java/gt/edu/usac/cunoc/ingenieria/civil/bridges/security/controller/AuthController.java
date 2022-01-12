@@ -16,6 +16,7 @@ import gt.edu.usac.cunoc.ingenieria.civil.bridges.security.service.RolService;
 import gt.edu.usac.cunoc.ingenieria.civil.bridges.security.service.UserService;
 import java.util.HashSet;
 import java.util.Set;
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -60,7 +61,7 @@ public class AuthController {
     //Fixme: Eliminar @Valid
     //new Message("campos mal puestos o email invalido")
     @PostMapping("/newUser")
-    public ResponseEntity<?> newUser(@Validated @RequestBody NewUser newUser, BindingResult bindingResult) {
+    public ResponseEntity<?> newUser(@Valid @RequestBody NewUser newUser, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return new ResponseEntity("campos mal puestos o email invalido", HttpStatus.BAD_REQUEST);
         }
@@ -79,11 +80,11 @@ public class AuthController {
         }
         user.setRoles(roles);
         userService.save(user);
-        return new ResponseEntity<>("Usuario guardado", HttpStatus.CREATED);
+        return new ResponseEntity("Usuario guardado", HttpStatus.CREATED);
     }
 
     @PostMapping("/login")
-    public ResponseEntity<JwtDto> login(@Validated @RequestBody LoginUser loginUser, BindingResult bindingResult) {
+    public ResponseEntity<JwtDto> login(@Valid @RequestBody LoginUser loginUser, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return new ResponseEntity("campos mal puestos ", HttpStatus.BAD_REQUEST);
         }

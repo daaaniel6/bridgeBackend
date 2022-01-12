@@ -12,7 +12,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
 /**
- * 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aaaaaaaaaaaa
+ * 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
  *
  * @author daniel
  */
