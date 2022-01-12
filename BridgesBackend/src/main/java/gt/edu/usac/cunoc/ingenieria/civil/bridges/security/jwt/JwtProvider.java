@@ -5,6 +5,10 @@
  */
 package gt.edu.usac.cunoc.ingenieria.civil.bridges.security.jwt;
 
+import com.nimbusds.jwt.JWT;
+import com.nimbusds.jwt.JWTClaimsSet;
+import com.nimbusds.jwt.JWTParser;
+import gt.edu.usac.cunoc.ingenieria.civil.bridges.security.dto.JwtDto;
 import gt.edu.usac.cunoc.ingenieria.civil.bridges.security.entity.PrincipalUser;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
@@ -12,6 +16,7 @@ import io.jsonwebtoken.MalformedJwtException;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.SignatureException;
 import io.jsonwebtoken.UnsupportedJwtException;
+import java.text.ParseException;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -46,7 +51,7 @@ public class JwtProvider {
                 .setSubject(principalUser.getUsername())
                 .claim("roles", roles)
                 .setIssuedAt(new Date())
-                .setExpiration(new Date(new Date().getTime() + expiration * 1000))
+                .setExpiration(new Date(new Date().getTime() + expiration ))
                 .signWith(SignatureAlgorithm.HS512, secret.getBytes())
                 .compact();
     }
@@ -71,5 +76,19 @@ public class JwtProvider {
             logger.error("fail en la firma");
         }
         return false;
+    }
+    
+    public String refreshToken(JwtDto jwtDto) throws ParseException{
+        JWT jwt = JWTParser.parse(jwtDto.getToken());
+        JWTClaimsSet claims = jwt.getJWTClaimsSet();
+        String username = claims.getSubject();
+        List<String> roles = (List<String>)claims.getClaim("roles");
+        return  Jwts.builder()
+                .setSubject(username)
+                .claim("roles", roles)
+                .setIssuedAt(new Date())
+                .setExpiration(new Date(new Date().getTime() + expiration ))
+                .signWith(SignatureAlgorithm.HS512, secret.getBytes())
+                .compact();
     }
 }
