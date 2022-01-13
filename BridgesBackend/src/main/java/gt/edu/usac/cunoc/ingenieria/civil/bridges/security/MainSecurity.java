@@ -60,6 +60,7 @@ public class MainSecurity extends WebSecurityConfigurerAdapter {
                 // .antMatchers("/api/departaments").hasRole("ADMIN")
                 .antMatchers(
                         "/auth/**",
+                        "/email-password/**",
                         "/v2/api-docs/**",
                         "/swagger-ui/**",
                         "/swagger-resources/**",
