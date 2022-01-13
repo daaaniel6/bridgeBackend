@@ -30,6 +30,10 @@ public class UserService {
         return userRepository.findByUserNameOrEmail(usernameOrEmail, usernameOrEmail);
     }
 
+    public Optional<User> getByTokenPassword(String tokenPassword) {
+        return userRepository.findByTokenPassword(tokenPassword);
+    }
+
     public boolean existsByUserName(String userName) {
         return userRepository.existsByUserName(userName);
     }
