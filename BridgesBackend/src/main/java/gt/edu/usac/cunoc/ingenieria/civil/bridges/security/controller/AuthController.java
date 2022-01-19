@@ -62,10 +62,10 @@ public class AuthController {
     @PostMapping("/newUser")
     public ResponseEntity<?> newUser(@Valid @RequestBody NewUser newUser, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
-            return new ResponseEntity("campos mal puestos o email invalido", HttpStatus.BAD_REQUEST);
+            return new ResponseEntity("Error en los campos o email invalido", HttpStatus.BAD_REQUEST);
         }
         if (userService.existsByUserName(newUser.getUsername())) {
-            return new ResponseEntity("Ese user nombre ya existe", HttpStatus.BAD_REQUEST);
+            return new ResponseEntity("Ese nombre de usuario ya existe", HttpStatus.BAD_REQUEST);
         }
         if (userService.existsByEmail(newUser.getEmail())) {
             return new ResponseEntity("Ese email ya existe", HttpStatus.BAD_REQUEST);
@@ -85,7 +85,7 @@ public class AuthController {
     @PostMapping("/login")
     public ResponseEntity<JwtDto> login(@Valid @RequestBody LoginUser loginUser, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
-            return new ResponseEntity("campos mal puestos ", HttpStatus.BAD_REQUEST);
+            return new ResponseEntity("Error de autorizacion", HttpStatus.BAD_REQUEST);
         }
         Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginUser.getUsername(), loginUser.getPassword()));
         SecurityContextHolder.getContext().setAuthentication(authentication);

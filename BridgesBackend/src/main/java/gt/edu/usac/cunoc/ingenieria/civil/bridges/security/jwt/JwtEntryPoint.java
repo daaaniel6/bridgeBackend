@@ -30,7 +30,7 @@ public class JwtEntryPoint implements AuthenticationEntryPoint{
     @Override
     public void commence(HttpServletRequest req, HttpServletResponse res, AuthenticationException e) throws IOException, ServletException {
         logger.error("fail en el metodo commnecce");
-        res.sendError(HttpServletResponse.SC_UNAUTHORIZED, "No autorizado es ");
+        res.sendError(HttpServletResponse.SC_UNAUTHORIZED, "La contraseña o el usuario coinciden");
 //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
