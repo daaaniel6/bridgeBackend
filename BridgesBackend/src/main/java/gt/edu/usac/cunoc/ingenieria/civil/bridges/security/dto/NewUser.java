@@ -5,7 +5,6 @@
  */
 package gt.edu.usac.cunoc.ingenieria.civil.bridges.security.dto;
 
-import com.sun.istack.NotNull;
 import java.util.HashSet;
 import java.util.Set;
 import javax.validation.constraints.Email;

@@ -5,9 +5,6 @@
  */
 package gt.edu.usac.cunoc.ingenieria.civil.bridges.security.dto;
 
-import java.util.Collection;
-import org.springframework.security.core.GrantedAuthority;
-
 /**
  *
  * @author daniel
@@ -15,9 +12,9 @@ import org.springframework.security.core.GrantedAuthority;
 public class JwtDto {
 
     private String token;
-//    private String bearer = "Bearer";
-//    private String username;
-//    private Collection<? extends GrantedAuthority> authorities;
+    // private String bearer = "Bearer";
+    // private String username;
+    // private Collection<? extends GrantedAuthority> authorities;
 
     public JwtDto() {
     }

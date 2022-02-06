@@ -5,6 +5,7 @@
  */
 package gt.edu.usac.cunoc.ingenieria.civil.bridges.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -18,6 +19,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -40,13 +42,17 @@ public class Image implements Serializable {
     @Basic(optional = false)
     @Column(name = "image_id")
     private Long imageId;
+    @Size(max = 4500)
     @Column(name = "name")
     private String name;
+    @Size(max = 450)
     @Column(name = "comment")
     private String comment;
     @Lob
     @Column(name = "image")
     private byte[] image;
+    
+    @JsonIgnore
     @JoinColumn(name = "bridge_bridge_id", referencedColumnName = "bridge_id")
     @ManyToOne
     private Bridge bridgeBridgeId;

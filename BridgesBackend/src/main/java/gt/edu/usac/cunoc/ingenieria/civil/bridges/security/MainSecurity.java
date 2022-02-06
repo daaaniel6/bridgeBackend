@@ -5,11 +5,7 @@
  */
 package gt.edu.usac.cunoc.ingenieria.civil.bridges.security;
 
-import gt.edu.usac.cunoc.ingenieria.civil.bridges.security.jwt.JwtEntryPoint;
-import gt.edu.usac.cunoc.ingenieria.civil.bridges.security.jwt.JwtTokenFilter;
-import gt.edu.usac.cunoc.ingenieria.civil.bridges.security.service.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -22,6 +18,10 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+
+import gt.edu.usac.cunoc.ingenieria.civil.bridges.security.jwt.JwtEntryPoint;
+import gt.edu.usac.cunoc.ingenieria.civil.bridges.security.jwt.JwtTokenFilter;
+import gt.edu.usac.cunoc.ingenieria.civil.bridges.security.service.UserDetailsServiceImpl;
 
 /**
  * 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

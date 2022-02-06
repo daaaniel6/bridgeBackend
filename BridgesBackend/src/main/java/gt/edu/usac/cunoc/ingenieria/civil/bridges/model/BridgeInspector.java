@@ -5,6 +5,7 @@
  */
 package gt.edu.usac.cunoc.ingenieria.civil.bridges.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -17,6 +18,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -38,8 +40,11 @@ public class BridgeInspector implements Serializable {
     @Basic(optional = false)
     @Column(name = "bridge_inspector_id")
     private Long bridgeInspectorId;
+    @Size(max = 450)
     @Column(name = "description")
     private String description;
+    
+    @JsonIgnore
     @JoinColumn(name = "bridge_bridge_id", referencedColumnName = "bridge_id")
     @ManyToOne
     private Bridge bridgeBridgeId;

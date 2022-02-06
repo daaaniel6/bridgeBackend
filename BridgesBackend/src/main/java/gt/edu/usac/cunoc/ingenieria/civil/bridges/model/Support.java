@@ -17,6 +17,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -47,22 +48,31 @@ public class Support implements Serializable {
     @Basic(optional = false)
     @Column(name = "support_id")
     private Long supportId;
+    @Size(max = 450)
     @Column(name = "name")
     private String name;
+    @Size(max = 450)
     @Column(name = "material")
     private String material;
+    @Size(max = 450)
     @Column(name = "crushed_neoprene")
     private String crushedNeoprene;
+    @Size(max = 450)
     @Column(name = "out_of_place")
     private String outOfPlace;
+    @Size(max = 450)
     @Column(name = "rusty")
     private String rusty;
+    @Size(max = 450)
     @Column(name = "bolt_missing")
     private String boltMissing;
+    @Size(max = 450)
     @Column(name = "broken_bolt")
     private String brokenBolt;
+    @Size(max = 450)
     @Column(name = "others")
     private String others;
+    @Size(max = 450)
     @Column(name = "extra")
     private String extra;
     @OneToMany(mappedBy = "supportSupportId")

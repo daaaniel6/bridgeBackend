@@ -17,6 +17,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -45,19 +46,25 @@ public class Barrier implements Serializable {
     @Basic(optional = false)
     @Column(name = "barrier_id")
     private Long barrierId;
+    @Size(max = 450)
     @Column(name = "material")
     private String material;
+    @Size(max = 450)
     @Column(name = "cracks_in_one_direction")
     private String cracksInOneDirection;
+    @Size(max = 450)
     @Column(name = "cracks_in_two_directions")
     private String cracksInTwoDirections;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Column(name = "beaten")
     private Double beaten;
+    @Size(max = 450)
     @Column(name = "painting")
     private String painting;
+    @Size(max = 450)
     @Column(name = "others")
     private String others;
+    @Size(max = 45)
     @Column(name = "extra")
     private String extra;
     @OneToMany(mappedBy = "barrierBarrierId")

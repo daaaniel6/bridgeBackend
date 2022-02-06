@@ -5,6 +5,7 @@
  */
 package gt.edu.usac.cunoc.ingenieria.civil.bridges.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
@@ -21,6 +22,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -52,16 +54,22 @@ public class Channel implements Serializable {
     @Basic(optional = false)
     @Column(name = "channel_id")
     private Long channelId;
+    @Size(max = 450)
     @Column(name = "river_name")
     private String riverName;
+    @Size(max = 450)
     @Column(name = "body_type")
     private String bodyType;
+    @Size(max = 450)
     @Column(name = "channel_status")
     private String channelStatus;
+    @Size(max = 450)
     @Column(name = "state_zone_adjacent_to_abutments")
     private String stateZoneAdjacentToAbutments;
+    @Size(max = 450)
     @Column(name = "channeling")
     private String channeling;
+    @Size(max = 450)
     @Column(name = "overflow")
     private String overflow;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
@@ -70,13 +78,17 @@ public class Channel implements Serializable {
     @Column(name = "last_overflow_date")
     @Temporal(TemporalType.DATE)
     private Date lastOverflowDate;
+    @Size(max = 4500)
     @Column(name = "observation")
     private String observation;
+    @Size(max = 450)
     @Column(name = "extra")
     private String extra;
     @Lob
     @Column(name = "image")
     private byte[] image;
+    
+    @JsonIgnore
     @OneToMany(mappedBy = "channelChannelId")
     private List<Bridge> bridgeList;
 

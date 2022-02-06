@@ -18,6 +18,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -42,17 +43,20 @@ public class Departament implements Serializable {
     @Basic(optional = false)
     @Column(name = "departament_id")
     private Integer departamentId;
+    @Size(max = 450)
     @Column(name = "name")
     private String name;
+    @Size(max = 45)
     @Column(name = "long")
     private String long1;
+    @Size(max = 45)
     @Column(name = "lat")
     private String lat;
-    //FIXED: JSON ignore puede ser un dolor de cabeza
     
-    //@JsonIgnore
+
     @OneToMany(mappedBy = "departamentDepartamentId")
     private List<Municipality> municipalityList;
+    
     @JsonIgnore
     @OneToMany(mappedBy = "departamentDepartamentId")
     private List<Bridge> bridgeList;

@@ -5,6 +5,7 @@
  */
 package gt.edu.usac.cunoc.ingenieria.civil.bridges.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -18,6 +19,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -46,8 +48,10 @@ public class Blueprint implements Serializable {
     @Lob
     @Column(name = "blueprint")
     private byte[] blueprint;
+    @Size(max = 450)
     @Column(name = "name")
     private String name;
+    @Size(max = 450)
     @Column(name = "description")
     private String description;
     @Column(name = "number")
@@ -57,6 +61,8 @@ public class Blueprint implements Serializable {
     private Double height;
     @Column(name = "width")
     private Double width;
+    
+    @JsonIgnore
     @JoinColumn(name = "bridge_bridge_id", referencedColumnName = "bridge_id")
     @ManyToOne
     private Bridge bridgeBridgeId;

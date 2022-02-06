@@ -17,6 +17,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -42,14 +43,19 @@ public class SlabAccess implements Serializable {
     @Basic(optional = false)
     @Column(name = "slab_access_id")
     private Long slabAccessId;
+    @Size(max = 450)
     @Column(name = "name_salab_access")
     private String nameSalabAccess;
+    @Size(max = 450)
     @Column(name = "material")
     private String material;
+    @Size(max = 450)
     @Column(name = "good_condition")
     private String goodCondition;
+    @Size(max = 450)
     @Column(name = "damage")
     private String damage;
+    @Size(max = 45)
     @Column(name = "extra")
     private String extra;
     @JoinColumn(name = "non_structural_elements_non_structural_elements_id", referencedColumnName = "non_structural_elements_id")

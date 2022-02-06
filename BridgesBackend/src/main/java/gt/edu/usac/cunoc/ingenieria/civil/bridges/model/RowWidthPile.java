@@ -17,6 +17,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -47,8 +48,10 @@ public class RowWidthPile implements Serializable {
     @Basic(optional = false)
     @Column(name = "row_width_pile_id")
     private Long rowWidthPileId;
+    @Size(max = 450)
     @Column(name = "name_row")
     private String nameRow;
+    @Size(max = 450)
     @Column(name = "material")
     private String material;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
@@ -56,16 +59,22 @@ public class RowWidthPile implements Serializable {
     private Double height;
     @Column(name = "width")
     private Long width;
+    @Size(max = 450)
     @Column(name = "cracks_in_one_direction")
     private String cracksInOneDirection;
+    @Size(max = 450)
     @Column(name = "cracks_in_two_directions")
     private String cracksInTwoDirections;
+    @Size(max = 450)
     @Column(name = "stone_loss_per_blow")
     private String stoneLossPerBlow;
+    @Size(max = 450)
     @Column(name = "steel_exhibition")
     private String steelExhibition;
+    @Size(max = 450)
     @Column(name = "others")
     private String others;
+    @Size(max = 450)
     @Column(name = "extra")
     private String extra;
     @JoinColumn(name = "pile_pile_id", referencedColumnName = "pile_id")

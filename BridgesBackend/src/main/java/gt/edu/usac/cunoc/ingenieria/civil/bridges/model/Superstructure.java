@@ -5,6 +5,7 @@
  */
 package gt.edu.usac.cunoc.ingenieria.civil.bridges.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
@@ -54,6 +55,8 @@ public class Superstructure implements Serializable {
     private SewerSystem sewerSystemSewerSystemId;
     @OneToMany(mappedBy = "superstructureSuperstructureId")
     private List<SteelRow> steelRowList;
+    
+    @JsonIgnore
     @OneToMany(mappedBy = "superstructureSuperstructureId")
     private List<Bridge> bridgeList;
 

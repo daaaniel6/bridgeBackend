@@ -5,10 +5,20 @@
  */
 package gt.edu.usac.cunoc.ingenieria.civil.bridges.repository;
 
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import gt.edu.usac.cunoc.ingenieria.civil.bridges.model.Bridge;
+
 /**
  *
  * @author daniel
  */
-public interface BridgeRepository {
-    
+
+/**
+ * Access to the database
+ */
+@Repository
+public interface BridgeRepository extends JpaRepository<Bridge, Long> {
+
 }

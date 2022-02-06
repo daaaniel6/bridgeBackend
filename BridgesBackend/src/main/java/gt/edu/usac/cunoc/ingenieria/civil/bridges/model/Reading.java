@@ -20,6 +20,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -44,13 +45,16 @@ public class Reading implements Serializable {
     @Basic(optional = false)
     @Column(name = "reading_id")
     private Long readingId;
+    @Size(max = 450)
     @Column(name = "reading")
     private String reading;
+    @Size(max = 450)
     @Column(name = "description")
     private String description;
     @Column(name = "date_time")
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateTime;
+    @Size(max = 450)
     @Column(name = "extra")
     private String extra;
     @JoinColumn(name = "sensor_sensor_id", referencedColumnName = "sensor_id")

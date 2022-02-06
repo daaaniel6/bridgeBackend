@@ -5,6 +5,7 @@
  */
 package gt.edu.usac.cunoc.ingenieria.civil.bridges.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
@@ -20,6 +21,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -66,16 +68,19 @@ public class GeneralData implements Serializable {
     private Double curbWidthRight;
     @Column(name = "curb_width_left")
     private Double curbWidthLeft;
+    @Size(max = 450)
     @Column(name = "bridge_typology")
     private String bridgeTypology;
     @Column(name = "top_headroom")
     private Double topHeadroom;
     @Column(name = "free_height_above_river")
     private Double freeHeightAboveRiver;
+    @Size(max = 450)
     @Column(name = "bridge_over")
     private String bridgeOver;
     @Column(name = "number_roads")
     private Integer numberRoads;
+    @Size(max = 450)
     @Column(name = "superstructure_material")
     private String superstructureMaterial;
     @Column(name = "traffic")
@@ -85,6 +90,8 @@ public class GeneralData implements Serializable {
     @Column(name = "last_evaluation_date")
     @Temporal(TemporalType.DATE)
     private Date lastEvaluationDate;
+    
+    @JsonIgnore
     @OneToMany(mappedBy = "generalDataGeneralDataId")
     private List<Bridge> bridgeList;
 

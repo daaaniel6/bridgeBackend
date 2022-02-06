@@ -17,6 +17,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -44,16 +45,22 @@ public class Scour implements Serializable {
     @Basic(optional = false)
     @Column(name = "scour_id")
     private Long scourId;
+    @Size(max = 450)
     @Column(name = "name")
     private String name;
+    @Size(max = 450)
     @Column(name = "there_is_not")
     private String thereIsNot;
+    @Size(max = 450)
     @Column(name = "yes_but_there_is_not")
     private String yesButThereIsNot;
+    @Size(max = 450)
     @Column(name = "yes_there_is_exposure")
     private String yesThereIsExposure;
+    @Size(max = 450)
     @Column(name = "settlement_of")
     private String settlementOf;
+    @Size(max = 45)
     @Column(name = "extra")
     private String extra;
     @OneToMany(mappedBy = "scourScourId")

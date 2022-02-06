@@ -17,6 +17,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -41,10 +42,13 @@ public class SewerSystem implements Serializable {
     @Basic(optional = false)
     @Column(name = "sewer_system_id")
     private Long sewerSystemId;
+    @Size(max = 450)
     @Column(name = "clean")
     private String clean;
+    @Size(max = 450)
     @Column(name = "blocked")
     private String blocked;
+    @Size(max = 45)
     @Column(name = "extra")
     private String extra;
     @OneToMany(mappedBy = "sewerSystemSewerSystemId")

@@ -18,6 +18,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -40,8 +41,10 @@ public class ImageOther implements Serializable {
     @Basic(optional = false)
     @Column(name = "image_other_id")
     private Long imageOtherId;
+    @Size(max = 4500)
     @Column(name = "name")
     private String name;
+    @Size(max = 450)
     @Column(name = "comment")
     private String comment;
     @Lob

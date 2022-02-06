@@ -5,12 +5,11 @@
  */
 package gt.edu.usac.cunoc.ingenieria.civil.bridges.config;
 
-import gt.edu.usac.cunoc.ingenieria.civil.bridges.security.entity.Rol;
-import gt.edu.usac.cunoc.ingenieria.civil.bridges.security.enums.NameRol;
-import gt.edu.usac.cunoc.ingenieria.civil.bridges.security.service.RolService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
+
+import gt.edu.usac.cunoc.ingenieria.civil.bridges.security.service.RolService;
 
 /**
  *
@@ -25,11 +24,12 @@ public class CreateRoles implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-//        Rol rolAdmin = new Rol(NameRol.ROL_ADMIN);
-//        Rol rolUser = new Rol(NameRol.ROL_USER);
-//        roleService.save(rolAdmin);
-//        roleService.save(rolUser);
-//throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        // Rol rolAdmin = new Rol(NameRol.ROL_ADMIN);
+        // Rol rolUser = new Rol(NameRol.ROL_USER);
+        // roleService.save(rolAdmin);
+        // roleService.save(rolUser);
+        // throw new UnsupportedOperationException("Not supported yet."); //To change
+        // body of generated methods, choose Tools | Templates.
     }
 
 }

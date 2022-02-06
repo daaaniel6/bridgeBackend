@@ -5,6 +5,7 @@
  */
 package gt.edu.usac.cunoc.ingenieria.civil.bridges.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
@@ -19,6 +20,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -44,16 +46,22 @@ public class Sensor implements Serializable {
     @Basic(optional = false)
     @Column(name = "sensor_id")
     private Long sensorId;
+    @Size(max = 450)
     @Column(name = "name")
     private String name;
+    @Size(max = 450)
     @Column(name = "data")
     private String data;
+    @Size(max = 450)
     @Column(name = "description")
     private String description;
+    @Size(max = 450)
     @Column(name = "extra")
     private String extra;
     @OneToMany(mappedBy = "sensorSensorId")
     private List<Reading> readingList;
+    
+    @JsonIgnore
     @JoinColumn(name = "bridge_bridge_id", referencedColumnName = "bridge_id")
     @ManyToOne
     private Bridge bridgeBridgeId;

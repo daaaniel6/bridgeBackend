@@ -17,6 +17,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -44,18 +45,25 @@ public class ConcreteRow implements Serializable {
     @Basic(optional = false)
     @Column(name = "concrete_row_id")
     private Long concreteRowId;
+    @Size(max = 450)
     @Column(name = "name_concrete")
     private String nameConcrete;
+    @Size(max = 450)
     @Column(name = "diagonal_cracks")
     private String diagonalCracks;
+    @Size(max = 450)
     @Column(name = "vertical_cracks")
     private String verticalCracks;
+    @Size(max = 450)
     @Column(name = "stone_loss_per_blow")
     private String stoneLossPerBlow;
+    @Size(max = 450)
     @Column(name = "steel_exhibition")
     private String steelExhibition;
+    @Size(max = 450)
     @Column(name = "others")
     private String others;
+    @Size(max = 450)
     @Column(name = "extra")
     private String extra;
     @JoinColumn(name = "superstructure_superstructure_id", referencedColumnName = "superstructure_id")

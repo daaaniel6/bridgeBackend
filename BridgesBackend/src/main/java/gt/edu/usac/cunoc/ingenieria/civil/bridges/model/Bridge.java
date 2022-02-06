@@ -5,10 +5,12 @@
  */
 package gt.edu.usac.cunoc.ingenieria.civil.bridges.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -22,6 +24,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -62,30 +65,42 @@ public class Bridge implements Serializable {
     @Basic(optional = false)
     @Column(name = "bridge_id")
     private Long bridgeId;
-    @Column(name = "name")
+    @Size(max = 450)
+    @Column(name = "`name`")
     private String name;
-    @Column(name = "code")
+    @Size(max = 450)
+    @Column(name = "`code`")
     private String code;
+    @Size(max = 450)
     @Column(name = "route")
     private String route;
     @Column(name = "mileage")
-    private String mileage;
+    private Integer mileage;
+    @Size(max = 450)
     @Column(name = "paved_route")
     private String pavedRoute;
+    @Size(max = 450)
     @Column(name = "horizontal_alignment")
     private String horizontalAlignment;
+    @Size(max = 450)
     @Column(name = "skew")
     private String skew;
+    @Size(max = 450)
     @Column(name = "north_utm_coordinates")
     private String northUtmCoordinates;
+    @Size(max = 450)
     @Column(name = "east_utm_coordinates")
     private String eastUtmCoordinates;
+    @Size(max = 450)
     @Column(name = "population_before")
     private String populationBefore;
+    @Size(max = 450)
     @Column(name = "population_after")
     private String populationAfter;
-    @Column(name = "status")
+    @Size(max = 450)
+    @Column(name = "`status`")
     private String status;
+    @Size(max = 450)
     @Column(name = "traffic_light")
     private String trafficLight;
     @Column(name = "evaluation_start_date")
@@ -94,14 +109,20 @@ public class Bridge implements Serializable {
     @Column(name = "evaluation_end_date")
     @Temporal(TemporalType.DATE)
     private Date evaluationEndDate;
-    @Column(name = "long")
+    @Size(max = 45)
+    @Column(name = "`long`")
     private String long1;
+    @Size(max = 45)
     @Column(name = "lat")
     private String lat;
-    @Column(name = "type")
+    @Size(max = 450)
+    @Column(name = "`type`")
     private String type;
+    @Size(max = 450)
     @Column(name = "extra")
     private String extra;
+    
+    
     @OneToMany(mappedBy = "bridgeBridgeId")
     private List<BridgeInspector> bridgeInspectorList;
     @OneToMany(mappedBy = "bridgeBridgeId")
@@ -114,17 +135,26 @@ public class Bridge implements Serializable {
     private List<Stapes> stapesList;
     @OneToMany(mappedBy = "bridgeBridgeId")
     private List<Comment> commentList;
+    
+    
     @OneToMany(mappedBy = "bridgeBridgeId")
     private List<Sensor> sensorList;
+
     @JoinColumn(name = "channel_channel_id", referencedColumnName = "channel_id")
     @ManyToOne
     private Channel channelChannelId;
+    
+    
     @JoinColumn(name = "departament_departament_id", referencedColumnName = "departament_id")
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.MERGE)
     private Departament departamentDepartamentId;
+    
     @JoinColumn(name = "general_data_general_data_id", referencedColumnName = "general_data_id")
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private GeneralData generalDataGeneralDataId;
+    @JoinColumn(name = "municipality_municipality_id", referencedColumnName = "municipality_id")
+    @ManyToOne(cascade = CascadeType.MERGE)
+    private Municipality municipalityMunicipalityId;
     @JoinColumn(name = "non_structural_elements_non_structural_elements_id", referencedColumnName = "non_structural_elements_id")
     @ManyToOne
     private NonStructuralElements nonStructuralElementsNonStructuralElementsId;
@@ -177,11 +207,11 @@ public class Bridge implements Serializable {
         this.route = route;
     }
 
-    public String getMileage() {
+    public Integer getMileage() {
         return mileage;
     }
 
-    public void setMileage(String mileage) {
+    public void setMileage(Integer mileage) {
         this.mileage = mileage;
     }
 
@@ -390,6 +420,14 @@ public class Bridge implements Serializable {
 
     public void setGeneralDataGeneralDataId(GeneralData generalDataGeneralDataId) {
         this.generalDataGeneralDataId = generalDataGeneralDataId;
+    }
+
+    public Municipality getMunicipalityMunicipalityId() {
+        return municipalityMunicipalityId;
+    }
+
+    public void setMunicipalityMunicipalityId(Municipality municipalityMunicipalityId) {
+        this.municipalityMunicipalityId = municipalityMunicipalityId;
     }
 
     public NonStructuralElements getNonStructuralElementsNonStructuralElementsId() {

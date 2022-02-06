@@ -17,6 +17,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -42,12 +43,17 @@ public class Inspector implements Serializable {
     @Basic(optional = false)
     @Column(name = "inspector_id")
     private Long inspectorId;
+    @Size(max = 450)
     @Column(name = "name")
     private String name;
+    @Size(max = 450)
     @Column(name = "telephone")
     private String telephone;
+    // @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="Invalid email")//if the field contains email address consider using this annotation to enforce field validation
+    @Size(max = 450)
     @Column(name = "email")
     private String email;
+    @Size(max = 450)
     @Column(name = "role")
     private String role;
     @OneToMany(mappedBy = "inspectorInspectorId")

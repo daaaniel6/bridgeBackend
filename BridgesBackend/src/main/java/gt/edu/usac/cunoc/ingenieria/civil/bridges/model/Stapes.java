@@ -5,6 +5,7 @@
  */
 package gt.edu.usac.cunoc.ingenieria.civil.bridges.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
@@ -20,6 +21,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -42,6 +44,7 @@ public class Stapes implements Serializable {
     @Basic(optional = false)
     @Column(name = "stapes_id")
     private Long stapesId;
+    @Size(max = 450)
     @Column(name = "name_stapes")
     private String nameStapes;
     @Lob
@@ -49,6 +52,8 @@ public class Stapes implements Serializable {
     private byte[] image;
     @OneToMany(mappedBy = "stapesStapesId")
     private List<RowWidth> rowWidthList;
+    
+    @JsonIgnore
     @JoinColumn(name = "bridge_bridge_id", referencedColumnName = "bridge_id")
     @ManyToOne
     private Bridge bridgeBridgeId;

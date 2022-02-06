@@ -17,6 +17,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -45,18 +46,24 @@ public class RailingPosts implements Serializable {
     @Basic(optional = false)
     @Column(name = "railing_posts_id")
     private Long railingPostsId;
+    @Size(max = 450)
     @Column(name = "material")
     private String material;
+    @Size(max = 450)
     @Column(name = "absence_of_section")
     private String absenceOfSection;
+    @Size(max = 450)
     @Column(name = "element_deformation")
     private String elementDeformation;
     @Column(name = "beaten")
     private Integer beaten;
+    @Size(max = 450)
     @Column(name = "painting")
     private String painting;
+    @Size(max = 450)
     @Column(name = "others")
     private String others;
+    @Size(max = 45)
     @Column(name = "extra")
     private String extra;
     @OneToMany(mappedBy = "railingPostsRailingPostsId")

@@ -5,6 +5,7 @@
  */
 package gt.edu.usac.cunoc.ingenieria.civil.bridges.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
@@ -17,6 +18,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -47,26 +49,37 @@ public class Other implements Serializable {
     @Basic(optional = false)
     @Column(name = "other_id")
     private Long otherId;
+    @Size(max = 450)
     @Column(name = "informative_signage")
     private String informativeSignage;
+    @Size(max = 45)
     @Column(name = "preventive_signage")
     private String preventiveSignage;
+    @Size(max = 450)
     @Column(name = "regulatory_signage")
     private String regulatorySignage;
+    @Size(max = 450)
     @Column(name = "horizontal_signage")
     private String horizontalSignage;
+    @Size(max = 450)
     @Column(name = "artificial_lighting")
     private String artificialLighting;
+    @Size(max = 450)
     @Column(name = "sewer_system")
     private String sewerSystem;
+    @Size(max = 450)
     @Column(name = "drainage_status")
     private String drainageStatus;
+    @Size(max = 4500)
     @Column(name = "observation")
     private String observation;
+    @Size(max = 45)
     @Column(name = "extra")
     private String extra;
     @OneToMany(mappedBy = "otherOtherId")
     private List<ImageOther> imageOtherList;
+    
+    @JsonIgnore
     @OneToMany(mappedBy = "otherOtherId")
     private List<Bridge> bridgeList;
 

@@ -5,6 +5,7 @@
  */
 package gt.edu.usac.cunoc.ingenieria.civil.bridges.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
@@ -59,6 +60,8 @@ public class NonStructuralElements implements Serializable {
     private List<Council> councilList;
     @OneToMany(mappedBy = "nonStructuralElementsNonStructuralElementsId")
     private List<SlabAccess> slabAccessList;
+    
+    @JsonIgnore
     @OneToMany(mappedBy = "nonStructuralElementsNonStructuralElementsId")
     private List<Bridge> bridgeList;
 
