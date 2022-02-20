@@ -5,6 +5,7 @@
  */
 package gt.edu.usac.cunoc.ingenieria.civil.bridges.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -46,9 +47,15 @@ public class Council implements Serializable {
     @Size(max = 450)
     @Column(name = "name_council")
     private String nameCouncil;
+
     @Size(max = 450)
     @Column(name = "material")
     private String material;
+
+    @Size(max = 450)
+    @Column(name = "missing_item")
+    private String missingItem;
+
     @Size(max = 450)
     @Column(name = "clean_gasket")
     private String cleanGasket;
@@ -58,6 +65,8 @@ public class Council implements Serializable {
     @Size(max = 45)
     @Column(name = "extra")
     private String extra;
+
+    @JsonIgnore
     @JoinColumn(name = "non_structural_elements_non_structural_elements_id", referencedColumnName = "non_structural_elements_id")
     @ManyToOne
     private NonStructuralElements nonStructuralElementsNonStructuralElementsId;
@@ -91,6 +100,14 @@ public class Council implements Serializable {
 
     public void setMaterial(String material) {
         this.material = material;
+    }
+
+    public String getMissingItem() {
+        return missingItem;
+    }
+
+    public void setMissingItem(String missingItem) {
+        this.missingItem = missingItem;
     }
 
     public String getCleanGasket() {
@@ -149,5 +166,5 @@ public class Council implements Serializable {
     public String toString() {
         return "gt.edu.usac.cunoc.ingenieria.civil.bridges.model.Council[ councilId=" + councilId + " ]";
     }
-    
+
 }

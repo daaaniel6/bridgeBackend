@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -50,18 +51,24 @@ public class Stapes implements Serializable {
     @Lob
     @Column(name = "image")
     private byte[] image;
-    @OneToMany(mappedBy = "stapesStapesId")
+    
+    @OneToMany(mappedBy = "stapesStapesId", cascade = CascadeType.ALL)
     private List<RowWidth> rowWidthList;
     
     @JsonIgnore
     @JoinColumn(name = "bridge_bridge_id", referencedColumnName = "bridge_id")
     @ManyToOne
     private Bridge bridgeBridgeId;
+//    
+//    @Column(name = "bridge_bridge_id", insertable = false, updatable = false)
+//    private Integer bridgeBridgeId;
+    
     @JoinColumn(name = "scour_scour_id", referencedColumnName = "scour_id")
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Scour scourScourId;
+    
     @JoinColumn(name = "support_support_id", referencedColumnName = "support_id")
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Support supportSupportId;
 
     public Stapes() {
@@ -111,6 +118,11 @@ public class Stapes implements Serializable {
     public void setBridgeBridgeId(Bridge bridgeBridgeId) {
         this.bridgeBridgeId = bridgeBridgeId;
     }
+
+   
+
+    
+    
 
     public Scour getScourScourId() {
         return scourScourId;

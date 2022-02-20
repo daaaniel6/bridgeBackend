@@ -5,6 +5,7 @@
  */
 package gt.edu.usac.cunoc.ingenieria.civil.bridges.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -60,6 +61,9 @@ public class ProtectionWorks implements Serializable {
     private Double width;
     @Column(name = "height")
     private Double height;
+    
+    
+    @JsonIgnore
     @JoinColumn(name = "non_structural_elements_non_structural_elements_id", referencedColumnName = "non_structural_elements_id")
     @ManyToOne
     private NonStructuralElements nonStructuralElementsNonStructuralElementsId;

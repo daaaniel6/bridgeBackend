@@ -12,6 +12,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import gt.edu.usac.cunoc.ingenieria.civil.bridges.model.Bridge;
+import gt.edu.usac.cunoc.ingenieria.civil.bridges.model.ConcreteRow;
+import gt.edu.usac.cunoc.ingenieria.civil.bridges.model.Stapes;
+import gt.edu.usac.cunoc.ingenieria.civil.bridges.model.Stretch;
+import gt.edu.usac.cunoc.ingenieria.civil.bridges.model.RowWidth;
+import gt.edu.usac.cunoc.ingenieria.civil.bridges.model.RowWidthPile;
+import gt.edu.usac.cunoc.ingenieria.civil.bridges.model.SteelRow;
 import gt.edu.usac.cunoc.ingenieria.civil.bridges.repository.BridgeRepository;
 import gt.edu.usac.cunoc.ingenieria.civil.bridges.service.BridgeService;
 
@@ -19,7 +25,6 @@ import gt.edu.usac.cunoc.ingenieria.civil.bridges.service.BridgeService;
  *
  * @author daniel
  */
-
 @Service
 public class BridgeServiceImpl implements BridgeService {
 
@@ -40,8 +45,27 @@ public class BridgeServiceImpl implements BridgeService {
 
     @Override
     @Transactional
-    public Bridge save(Bridge departament) {
-        return bridgeRepository.save(departament);
+    public Bridge save(Bridge bridge) {
+        for (Stapes stape : bridge.getStapesList()) {
+            stape.setBridgeBridgeId(bridge);
+            for (RowWidth rowWidth : stape.getRowWidthList()) {
+                rowWidth.setStapesStapesId(stape);
+            }
+        }
+        for(Stretch stretch: bridge.getStretchList()){
+            stretch.setBridgeBridgeId(bridge);
+        }
+        for (RowWidthPile rowWidthPile : bridge.getPilePileId().getRowWidthPileList()) {
+            rowWidthPile.setPilePileId(bridge.getPilePileId());
+        }
+        for (ConcreteRow concreteRow : bridge.getSuperstructureSuperstructureId().getConcreteRowList()) {
+            concreteRow.setSuperstructureSuperstructureId(bridge.getSuperstructureSuperstructureId());
+        }
+        for (SteelRow steelRow : bridge.getSuperstructureSuperstructureId().getSteelRowList()) {
+            steelRow.setSuperstructureSuperstructureId(bridge.getSuperstructureSuperstructureId());
+        }
+        
+        return bridgeRepository.save(bridge);
     }
 
     @Override

@@ -6,6 +6,7 @@
 package gt.edu.usac.cunoc.ingenieria.civil.bridges.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import gt.edu.usac.cunoc.ingenieria.civil.bridges.security.entity.User;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
@@ -17,6 +18,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -24,6 +26,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
@@ -65,77 +68,99 @@ public class Bridge implements Serializable {
     @Basic(optional = false)
     @Column(name = "bridge_id")
     private Long bridgeId;
-    @Size(max = 450)
-    @Column(name = "`name`")
+    
+    
+    @NotNull
+    @Size(min = 1, max = 450)
+    @Column(name = "name")
     private String name;
+    
     @Size(max = 450)
     @Column(name = "`code`")
     private String code;
+    
     @Size(max = 450)
     @Column(name = "route")
     private String route;
+    
     @Column(name = "mileage")
     private Integer mileage;
+    
     @Size(max = 450)
     @Column(name = "paved_route")
     private String pavedRoute;
+    
     @Size(max = 450)
     @Column(name = "horizontal_alignment")
     private String horizontalAlignment;
+    
     @Size(max = 450)
     @Column(name = "skew")
     private String skew;
+    
     @Size(max = 450)
     @Column(name = "north_utm_coordinates")
     private String northUtmCoordinates;
+    
     @Size(max = 450)
     @Column(name = "east_utm_coordinates")
     private String eastUtmCoordinates;
+    
     @Size(max = 450)
     @Column(name = "population_before")
     private String populationBefore;
+    
     @Size(max = 450)
     @Column(name = "population_after")
     private String populationAfter;
+    
     @Size(max = 450)
     @Column(name = "`status`")
     private String status;
+    
     @Size(max = 450)
     @Column(name = "traffic_light")
     private String trafficLight;
+    
     @Column(name = "evaluation_start_date")
     @Temporal(TemporalType.DATE)
     private Date evaluationStartDate;
+    
     @Column(name = "evaluation_end_date")
     @Temporal(TemporalType.DATE)
     private Date evaluationEndDate;
+    
     @Size(max = 45)
     @Column(name = "`long`")
     private String long1;
+    
     @Size(max = 45)
     @Column(name = "lat")
     private String lat;
+    
     @Size(max = 450)
     @Column(name = "`type`")
     private String type;
+    
     @Size(max = 450)
     @Column(name = "extra")
     private String extra;
     
-    
-    @OneToMany(mappedBy = "bridgeBridgeId")
-    private List<BridgeInspector> bridgeInspectorList;
-    @OneToMany(mappedBy = "bridgeBridgeId")
+    @OneToMany(mappedBy = "bridgeBridgeId",cascade = CascadeType.ALL)
     private List<Stretch> stretchList;
+    
     @OneToMany(mappedBy = "bridgeBridgeId")
     private List<Image> imageList;
+    
     @OneToMany(mappedBy = "bridgeBridgeId")
     private List<Blueprint> blueprintList;
-    @OneToMany(mappedBy = "bridgeBridgeId")
-    private List<Stapes> stapesList;
-    @OneToMany(mappedBy = "bridgeBridgeId")
-    private List<Comment> commentList;
     
+    @OneToMany(mappedBy = "bridgeBridgeId", cascade = CascadeType.ALL)
+    private List<Stapes> stapesList;
+    
+    @OneToMany(mappedBy = "bridge")
+    private List<Comment> commentList;
+//    
     
     @OneToMany(mappedBy = "bridgeBridgeId")
     private List<Sensor> sensorList;
@@ -144,35 +169,46 @@ public class Bridge implements Serializable {
     @ManyToOne
     private Channel channelChannelId;
     
-    
-    @JoinColumn(name = "departament_departament_id", referencedColumnName = "departament_id")
-    @ManyToOne(cascade = CascadeType.MERGE)
-    private Departament departamentDepartamentId;
-    
     @JoinColumn(name = "general_data_general_data_id", referencedColumnName = "general_data_id")
     @ManyToOne(cascade = CascadeType.ALL)
     private GeneralData generalDataGeneralDataId;
+    
     @JoinColumn(name = "municipality_municipality_id", referencedColumnName = "municipality_id")
     @ManyToOne(cascade = CascadeType.MERGE)
     private Municipality municipalityMunicipalityId;
+    
     @JoinColumn(name = "non_structural_elements_non_structural_elements_id", referencedColumnName = "non_structural_elements_id")
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private NonStructuralElements nonStructuralElementsNonStructuralElementsId;
+    
     @JoinColumn(name = "other_other_id", referencedColumnName = "other_id")
     @ManyToOne
     private Other otherOtherId;
+    
     @JoinColumn(name = "pile_pile_id", referencedColumnName = "pile_id")
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Pile pilePileId;
+    
     @JoinColumn(name = "superstructure_superstructure_id", referencedColumnName = "superstructure_id")
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Superstructure superstructureSuperstructureId;
+    
+    //@JoinColumns({
+        @JoinColumn(name = "user_user_id", referencedColumnName = "id")//,
+    //    @JoinColumn(name = "user_user_id", referencedColumnName = "id")})
+    @ManyToOne
+    private User user;
 
     public Bridge() {
     }
-
+    
     public Bridge(Long bridgeId) {
         this.bridgeId = bridgeId;
+    }
+
+    public Bridge(Long bridgeId, String name) {
+        this.bridgeId = bridgeId;
+        this.name = name;
     }
 
     public Long getBridgeId() {
@@ -336,15 +372,6 @@ public class Bridge implements Serializable {
     }
 
     @XmlTransient
-    public List<BridgeInspector> getBridgeInspectorList() {
-        return bridgeInspectorList;
-    }
-
-    public void setBridgeInspectorList(List<BridgeInspector> bridgeInspectorList) {
-        this.bridgeInspectorList = bridgeInspectorList;
-    }
-
-    @XmlTransient
     public List<Stretch> getStretchList() {
         return stretchList;
     }
@@ -406,14 +433,6 @@ public class Bridge implements Serializable {
         this.channelChannelId = channelChannelId;
     }
 
-    public Departament getDepartamentDepartamentId() {
-        return departamentDepartamentId;
-    }
-
-    public void setDepartamentDepartamentId(Departament departamentDepartamentId) {
-        this.departamentDepartamentId = departamentDepartamentId;
-    }
-
     public GeneralData getGeneralDataGeneralDataId() {
         return generalDataGeneralDataId;
     }
@@ -461,6 +480,16 @@ public class Bridge implements Serializable {
     public void setSuperstructureSuperstructureId(Superstructure superstructureSuperstructureId) {
         this.superstructureSuperstructureId = superstructureSuperstructureId;
     }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+    
+    
 
     @Override
     public int hashCode() {

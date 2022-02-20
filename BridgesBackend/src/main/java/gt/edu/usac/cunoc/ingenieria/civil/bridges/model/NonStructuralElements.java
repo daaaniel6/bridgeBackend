@@ -45,19 +45,25 @@ public class NonStructuralElements implements Serializable {
     @Lob
     @Column(name = "image")
     private byte[] image;
+    
     @JoinColumn(name = "barrier_barrier_id", referencedColumnName = "barrier_id")
     @ManyToOne
     private Barrier barrierBarrierId;
+    
     @JoinColumn(name = "handrail_railing_handrail_railing_id", referencedColumnName = "handrail_railing_id")
     @ManyToOne
     private HandrailRailing handrailRailingHandrailRailingId;
+    
     @JoinColumn(name = "railing_posts_railing_posts_id", referencedColumnName = "railing_posts_id")
     @ManyToOne
     private RailingPosts railingPostsRailingPostsId;
+    
     @OneToMany(mappedBy = "nonStructuralElementsNonStructuralElementsId")
     private List<ProtectionWorks> protectionWorksList;
+    
     @OneToMany(mappedBy = "nonStructuralElementsNonStructuralElementsId")
     private List<Council> councilList;
+    
     @OneToMany(mappedBy = "nonStructuralElementsNonStructuralElementsId")
     private List<SlabAccess> slabAccessList;
     

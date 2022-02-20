@@ -5,6 +5,7 @@
  */
 package gt.edu.usac.cunoc.ingenieria.civil.bridges.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -77,6 +78,8 @@ public class RowWidthPile implements Serializable {
     @Size(max = 450)
     @Column(name = "extra")
     private String extra;
+    
+    @JsonIgnore
     @JoinColumn(name = "pile_pile_id", referencedColumnName = "pile_id")
     @ManyToOne
     private Pile pilePileId;

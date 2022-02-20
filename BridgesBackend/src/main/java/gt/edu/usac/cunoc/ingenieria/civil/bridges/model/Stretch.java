@@ -56,6 +56,8 @@ public class Stretch implements Serializable {
     @JoinColumn(name = "bridge_bridge_id", referencedColumnName = "bridge_id")
     @ManyToOne
     private Bridge bridgeBridgeId;
+//    @Column(name = "bridge_bridge_id", insertable = false, updatable = false)
+//    private Integer bridgeBridgeId;
 
     public Stretch() {
     }
@@ -103,6 +105,9 @@ public class Stretch implements Serializable {
     public void setBridgeBridgeId(Bridge bridgeBridgeId) {
         this.bridgeBridgeId = bridgeBridgeId;
     }
+
+    
+    
 
     @Override
     public int hashCode() {

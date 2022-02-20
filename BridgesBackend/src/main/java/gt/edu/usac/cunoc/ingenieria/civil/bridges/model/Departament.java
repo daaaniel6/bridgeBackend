@@ -54,12 +54,10 @@ public class Departament implements Serializable {
     private String lat;
     
 
-    @OneToMany(mappedBy = "departamentDepartamentId")
-    private List<Municipality> municipalityList;
-    
     @JsonIgnore
     @OneToMany(mappedBy = "departamentDepartamentId")
-    private List<Bridge> bridgeList;
+    private List<Municipality> municipalityList;
+
 
     public Departament() {
     }
@@ -107,15 +105,6 @@ public class Departament implements Serializable {
 
     public void setMunicipalityList(List<Municipality> municipalityList) {
         this.municipalityList = municipalityList;
-    }
-
-    @XmlTransient
-    public List<Bridge> getBridgeList() {
-        return bridgeList;
-    }
-
-    public void setBridgeList(List<Bridge> bridgeList) {
-        this.bridgeList = bridgeList;
     }
 
     @Override

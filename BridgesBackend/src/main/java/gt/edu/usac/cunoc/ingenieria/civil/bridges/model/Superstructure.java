@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -42,18 +43,23 @@ public class Superstructure implements Serializable {
     @Basic(optional = false)
     @Column(name = "superstructure_id")
     private Long superstructureId;
+    
     @Lob
     @Column(name = "image")
     private byte[] image;
-    @OneToMany(mappedBy = "superstructureSuperstructureId")
+    
+    @OneToMany(mappedBy = "superstructureSuperstructureId", cascade = CascadeType.ALL)
     private List<ConcreteRow> concreteRowList;
+    
     @JoinColumn(name = "bearing_slab_bearing_slab_id", referencedColumnName = "bearing_slab_id")
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private BearingSlab bearingSlabBearingSlabId;
+    
     @JoinColumn(name = "sewer_system_sewer_system_id", referencedColumnName = "sewer_system_id")
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private SewerSystem sewerSystemSewerSystemId;
-    @OneToMany(mappedBy = "superstructureSuperstructureId")
+    
+    @OneToMany(mappedBy = "superstructureSuperstructureId", cascade = CascadeType.ALL)
     private List<SteelRow> steelRowList;
     
     @JsonIgnore

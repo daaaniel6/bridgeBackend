@@ -5,6 +5,7 @@
  */
 package gt.edu.usac.cunoc.ingenieria.civil.bridges.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -70,6 +71,9 @@ public class SteelRow implements Serializable {
     @Size(max = 450)
     @Column(name = "extra")
     private String extra;
+    
+    
+    @JsonIgnore
     @JoinColumn(name = "superstructure_superstructure_id", referencedColumnName = "superstructure_id")
     @ManyToOne
     private Superstructure superstructureSuperstructureId;

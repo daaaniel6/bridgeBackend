@@ -6,6 +6,7 @@
 package gt.edu.usac.cunoc.ingenieria.civil.bridges.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import gt.edu.usac.cunoc.ingenieria.civil.bridges.security.entity.User;
 import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -14,6 +15,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -32,7 +34,8 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Comment.findAll", query = "SELECT c FROM Comment c"),
     @NamedQuery(name = "Comment.findByCommentId", query = "SELECT c FROM Comment c WHERE c.commentId = :commentId"),
     @NamedQuery(name = "Comment.findByComment", query = "SELECT c FROM Comment c WHERE c.comment = :comment"),
-    @NamedQuery(name = "Comment.findByUserId", query = "SELECT c FROM Comment c WHERE c.userId = :userId")})
+//    @NamedQuery(name = "Comment.findByUserId", query = "SELECT c FROM Comment c WHERE c.userId = :userId")
+})
 public class Comment implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -41,20 +44,37 @@ public class Comment implements Serializable {
     @Basic(optional = false)
     @Column(name = "comment_id")
     private Long commentId;
+    
     @Size(max = 4500)
     @Column(name = "comment")
     private String comment;
+    
     @Size(max = 450)
-    @Column(name = "user_id")
-    private String userId;
+    @Column(name = "tag")
+    private String tag;
+    
+    @Size(max = 45)
+    @Column(name = "type")
+    private String type;
+    
+    @Size(max = 45)
+    @Column(name = "extra")
+    private String extra;
     
     @JsonIgnore
-    @JoinColumn(name = "bridge_bridge_id", referencedColumnName = "bridge_id")
+    //@JoinColumns({
+        @JoinColumn(name = "bridge_bridge_id", referencedColumnName = "bridge_id")
+    //,        @JoinColumn(name = "bridge_bridge_id", referencedColumnName = "bridge_id")})
     @ManyToOne
-    private Bridge bridgeBridgeId;
-    @JoinColumn(name = "inspector_inspector_id", referencedColumnName = "inspector_id")
+    private Bridge bridge;
+    
+    //@JoinColumns({
+        @JoinColumn(name = "user_user_id", referencedColumnName = "id")
+            //,        @JoinColumn(name = "user_user_id", referencedColumnName = "id")})
     @ManyToOne
-    private Inspector inspectorInspectorId;
+    private User user;
+    
+    
 
     public Comment() {
     }
@@ -79,29 +99,51 @@ public class Comment implements Serializable {
         this.comment = comment;
     }
 
-    public String getUserId() {
-        return userId;
+    public String getTag() {
+        return tag;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
+    public void setTag(String tag) {
+        this.tag = tag;
     }
 
-    public Bridge getBridgeBridgeId() {
-        return bridgeBridgeId;
+    public String getType() {
+        return type;
     }
 
-    public void setBridgeBridgeId(Bridge bridgeBridgeId) {
-        this.bridgeBridgeId = bridgeBridgeId;
+    public void setType(String type) {
+        this.type = type;
     }
 
-    public Inspector getInspectorInspectorId() {
-        return inspectorInspectorId;
+    public String getExtra() {
+        return extra;
     }
 
-    public void setInspectorInspectorId(Inspector inspectorInspectorId) {
-        this.inspectorInspectorId = inspectorInspectorId;
+    public void setExtra(String extra) {
+        this.extra = extra;
     }
+
+   
+
+    public Bridge getBridge() {
+        return bridge;
+    }
+
+    public void setBridge(Bridge bridge) {
+        this.bridge = bridge;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+//    
+
+    
 
     @Override
     public int hashCode() {

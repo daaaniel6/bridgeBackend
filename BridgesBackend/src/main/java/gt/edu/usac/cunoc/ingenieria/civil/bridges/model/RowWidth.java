@@ -5,6 +5,7 @@
  */
 package gt.edu.usac.cunoc.ingenieria.civil.bridges.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -77,9 +78,14 @@ public class RowWidth implements Serializable {
     @Size(max = 450)
     @Column(name = "extra")
     private String extra;
+    
+    @JsonIgnore
     @JoinColumn(name = "stapes_stapes_id", referencedColumnName = "stapes_id")
     @ManyToOne
     private Stapes stapesStapesId;
+    
+//    @Column(name = "stapes_stapes_id", insertable = false, updatable = false)
+//    private Integer stapesStapesId; 
 
     public RowWidth() {
     }
@@ -184,6 +190,9 @@ public class RowWidth implements Serializable {
         this.stapesStapesId = stapesStapesId;
     }
 
+    
+
+    
     @Override
     public int hashCode() {
         int hash = 0;

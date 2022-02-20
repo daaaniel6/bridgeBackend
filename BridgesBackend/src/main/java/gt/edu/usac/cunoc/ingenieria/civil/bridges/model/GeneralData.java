@@ -83,6 +83,17 @@ public class GeneralData implements Serializable {
     @Size(max = 450)
     @Column(name = "superstructure_material")
     private String superstructureMaterial;
+    
+    @Size(max = 450)
+    @Column(name = "design_load")
+    private String designLoad;
+    @Column(name = "year_of_construction")
+    private Integer yearOfConstruction;
+    @Size(max = 450)
+    @Column(name = "substructure_material")
+    private String substructureMaterial;
+    
+    
     @Column(name = "traffic")
     private Double traffic;
     @Column(name = "percentage_trucks_buses")
@@ -230,6 +241,33 @@ public class GeneralData implements Serializable {
     public void setBridgeList(List<Bridge> bridgeList) {
         this.bridgeList = bridgeList;
     }
+
+    public String getDesignLoad() {
+        return designLoad;
+    }
+
+    public void setDesignLoad(String designLoad) {
+        this.designLoad = designLoad;
+    }
+
+    public Integer getYearOfConstruction() {
+        return yearOfConstruction;
+    }
+
+    public void setYearOfConstruction(Integer yearOfConstruction) {
+        this.yearOfConstruction = yearOfConstruction;
+    }
+
+    public String getSubstructureMaterial() {
+        return substructureMaterial;
+    }
+
+    public void setSubstructureMaterial(String substructureMaterial) {
+        this.substructureMaterial = substructureMaterial;
+    }
+    
+    
+    
 
     @Override
     public int hashCode() {

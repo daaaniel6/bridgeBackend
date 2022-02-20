@@ -6,11 +6,9 @@
     <class>gt.edu.usac.cunoc.ingenieria.civil.bridges.model.ProtectionWorks</class>
     <class>gt.edu.usac.cunoc.ingenieria.civil.bridges.model.Bridge</class>
     <class>gt.edu.usac.cunoc.ingenieria.civil.bridges.model.Sensor</class>
-    <class>gt.edu.usac.cunoc.ingenieria.civil.bridges.model.BridgeInspector</class>
     <class>gt.edu.usac.cunoc.ingenieria.civil.bridges.model.HandrailRailing</class>
     <class>gt.edu.usac.cunoc.ingenieria.civil.bridges.model.RowWidthPile</class>
     <class>gt.edu.usac.cunoc.ingenieria.civil.bridges.model.Scour</class>
-    <class>gt.edu.usac.cunoc.ingenieria.civil.bridges.model.Inspector</class>
     <class>gt.edu.usac.cunoc.ingenieria.civil.bridges.model.Council</class>
     <class>gt.edu.usac.cunoc.ingenieria.civil.bridges.model.Other</class>
     <class>gt.edu.usac.cunoc.ingenieria.civil.bridges.model.SteelRow</class>

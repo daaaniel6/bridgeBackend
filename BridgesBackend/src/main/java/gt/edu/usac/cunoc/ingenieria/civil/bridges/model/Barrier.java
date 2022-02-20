@@ -5,6 +5,7 @@
  */
 package gt.edu.usac.cunoc.ingenieria.civil.bridges.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
@@ -67,6 +68,8 @@ public class Barrier implements Serializable {
     @Size(max = 45)
     @Column(name = "extra")
     private String extra;
+    
+    @JsonIgnore
     @OneToMany(mappedBy = "barrierBarrierId")
     private List<NonStructuralElements> nonStructuralElementsList;
 

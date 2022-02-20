@@ -5,6 +5,7 @@
  */
 package gt.edu.usac.cunoc.ingenieria.civil.bridges.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
@@ -75,8 +76,12 @@ public class Support implements Serializable {
     @Size(max = 450)
     @Column(name = "extra")
     private String extra;
+    
+    @JsonIgnore
     @OneToMany(mappedBy = "supportSupportId")
     private List<Pile> pileList;
+    
+    @JsonIgnore
     @OneToMany(mappedBy = "supportSupportId")
     private List<Stapes> stapesList;
 

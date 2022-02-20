@@ -5,6 +5,7 @@
  */
 package gt.edu.usac.cunoc.ingenieria.civil.bridges.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
@@ -63,8 +64,12 @@ public class Scour implements Serializable {
     @Size(max = 45)
     @Column(name = "extra")
     private String extra;
+    
+    @JsonIgnore
     @OneToMany(mappedBy = "scourScourId")
     private List<Pile> pileList;
+    
+    @JsonIgnore
     @OneToMany(mappedBy = "scourScourId")
     private List<Stapes> stapesList;
 

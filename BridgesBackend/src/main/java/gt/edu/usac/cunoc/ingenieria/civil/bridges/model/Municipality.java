@@ -5,7 +5,10 @@
  */
 package gt.edu.usac.cunoc.ingenieria.civil.bridges.model;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
@@ -58,8 +61,11 @@ public class Municipality implements Serializable {
     
     @JoinColumn(name = "departament_departament_id", referencedColumnName = "departament_id")
     @ManyToOne
-    @JsonIgnore
+    //@JsonIgnore
     private Departament departamentDepartamentId;
+    
+//    @Column(name = "departament_departament_id", insertable = false, updatable = false)
+//    private Integer transitDepartamentId;
     
     @JsonIgnore
     @OneToMany(mappedBy = "municipalityMunicipalityId")

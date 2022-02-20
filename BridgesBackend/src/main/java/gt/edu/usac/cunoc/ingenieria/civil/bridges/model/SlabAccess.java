@@ -5,6 +5,7 @@
  */
 package gt.edu.usac.cunoc.ingenieria.civil.bridges.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -58,6 +59,9 @@ public class SlabAccess implements Serializable {
     @Size(max = 45)
     @Column(name = "extra")
     private String extra;
+    
+    
+    @JsonIgnore
     @JoinColumn(name = "non_structural_elements_non_structural_elements_id", referencedColumnName = "non_structural_elements_id")
     @ManyToOne
     private NonStructuralElements nonStructuralElementsNonStructuralElementsId;

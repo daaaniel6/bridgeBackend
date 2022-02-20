@@ -63,4 +63,14 @@ public class DepartamentController {
     // }
     // return new ResponseEntity<>(obj,HttpStatus.OK);
     // }
+    
+    @GetMapping("/{id}/municipalities")
+    public ResponseEntity<?> getMunicipalities(@PathVariable Integer id) {
+        Optional<Departament> oDepartament = departamentService.findById(id);
+        if (!oDepartament.isPresent()) {
+            return ResponseEntity.notFound().build();
+        }
+
+        return ResponseEntity.ok(oDepartament.get().getMunicipalityList());
+    }
 }

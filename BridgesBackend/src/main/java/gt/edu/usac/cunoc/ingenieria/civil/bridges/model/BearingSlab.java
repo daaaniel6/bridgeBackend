@@ -5,6 +5,7 @@
  */
 package gt.edu.usac.cunoc.ingenieria.civil.bridges.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
@@ -71,6 +72,8 @@ public class BearingSlab implements Serializable {
     @Size(max = 450)
     @Column(name = "extra")
     private String extra;
+    
+    @JsonIgnore
     @OneToMany(mappedBy = "bearingSlabBearingSlabId")
     private List<Superstructure> superstructureList;
 

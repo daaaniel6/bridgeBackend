@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -50,13 +51,16 @@ public class Pile implements Serializable {
     @Lob
     @Column(name = "image")
     private byte[] image;
+    
     @JoinColumn(name = "scour_scour_id", referencedColumnName = "scour_id")
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Scour scourScourId;
+    
     @JoinColumn(name = "support_support_id", referencedColumnName = "support_id")
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Support supportSupportId;
-    @OneToMany(mappedBy = "pilePileId")
+    
+    @OneToMany(mappedBy = "pilePileId", cascade = CascadeType.ALL)
     private List<RowWidthPile> rowWidthPileList;
     
     @JsonIgnore
