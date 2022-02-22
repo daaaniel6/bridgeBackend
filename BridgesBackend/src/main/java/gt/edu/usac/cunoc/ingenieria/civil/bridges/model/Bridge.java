@@ -166,7 +166,7 @@ public class Bridge implements Serializable {
     private List<Sensor> sensorList;
 
     @JoinColumn(name = "channel_channel_id", referencedColumnName = "channel_id")
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Channel channelChannelId;
     
     @JoinColumn(name = "general_data_general_data_id", referencedColumnName = "general_data_id")
@@ -182,7 +182,7 @@ public class Bridge implements Serializable {
     private NonStructuralElements nonStructuralElementsNonStructuralElementsId;
     
     @JoinColumn(name = "other_other_id", referencedColumnName = "other_id")
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Other otherOtherId;
     
     @JoinColumn(name = "pile_pile_id", referencedColumnName = "pile_id")

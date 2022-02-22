@@ -13,10 +13,13 @@ import org.springframework.transaction.annotation.Transactional;
 
 import gt.edu.usac.cunoc.ingenieria.civil.bridges.model.Bridge;
 import gt.edu.usac.cunoc.ingenieria.civil.bridges.model.ConcreteRow;
+import gt.edu.usac.cunoc.ingenieria.civil.bridges.model.Council;
+import gt.edu.usac.cunoc.ingenieria.civil.bridges.model.ProtectionWorks;
 import gt.edu.usac.cunoc.ingenieria.civil.bridges.model.Stapes;
 import gt.edu.usac.cunoc.ingenieria.civil.bridges.model.Stretch;
 import gt.edu.usac.cunoc.ingenieria.civil.bridges.model.RowWidth;
 import gt.edu.usac.cunoc.ingenieria.civil.bridges.model.RowWidthPile;
+import gt.edu.usac.cunoc.ingenieria.civil.bridges.model.SlabAccess;
 import gt.edu.usac.cunoc.ingenieria.civil.bridges.model.SteelRow;
 import gt.edu.usac.cunoc.ingenieria.civil.bridges.repository.BridgeRepository;
 import gt.edu.usac.cunoc.ingenieria.civil.bridges.service.BridgeService;
@@ -63,6 +66,15 @@ public class BridgeServiceImpl implements BridgeService {
         }
         for (SteelRow steelRow : bridge.getSuperstructureSuperstructureId().getSteelRowList()) {
             steelRow.setSuperstructureSuperstructureId(bridge.getSuperstructureSuperstructureId());
+        }
+        for (Council council : bridge.getNonStructuralElementsNonStructuralElementsId().getCouncilList()) {
+            council.setNonStructuralElementsNonStructuralElementsId(bridge.getNonStructuralElementsNonStructuralElementsId());
+        }
+        for (SlabAccess slabAccess : bridge.getNonStructuralElementsNonStructuralElementsId().getSlabAccessList()) {
+            slabAccess.setNonStructuralElementsNonStructuralElementsId(bridge.getNonStructuralElementsNonStructuralElementsId());
+        }
+        for (ProtectionWorks protectionWorks : bridge.getNonStructuralElementsNonStructuralElementsId().getProtectionWorksList()) {
+            protectionWorks.setNonStructuralElementsNonStructuralElementsId(bridge.getNonStructuralElementsNonStructuralElementsId());
         }
         
         return bridgeRepository.save(bridge);

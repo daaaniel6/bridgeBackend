@@ -70,15 +70,25 @@ public class Other implements Serializable {
     @Size(max = 450)
     @Column(name = "drainage_status")
     private String drainageStatus;
+
     @Size(max = 4500)
     @Column(name = "observation")
     private String observation;
+
+    @Size(max = 4500)
+    @Column(name = "maintenance")
+    private String maintenance;
+
+    @Size(max = 4500)
+    @Column(name = "repair")
+    private String repair;
+
     @Size(max = 45)
     @Column(name = "extra")
     private String extra;
     @OneToMany(mappedBy = "otherOtherId")
     private List<ImageOther> imageOtherList;
-    
+
     @JsonIgnore
     @OneToMany(mappedBy = "otherOtherId")
     private List<Bridge> bridgeList;
@@ -170,6 +180,22 @@ public class Other implements Serializable {
         this.extra = extra;
     }
 
+    public String getMaintenance() {
+        return maintenance;
+    }
+
+    public void setMaintenance(String maintenance) {
+        this.maintenance = maintenance;
+    }
+
+    public String getRepair() {
+        return repair;
+    }
+
+    public void setRepair(String repair) {
+        this.repair = repair;
+    }
+
     @XmlTransient
     public List<ImageOther> getImageOtherList() {
         return imageOtherList;
@@ -212,5 +238,5 @@ public class Other implements Serializable {
     public String toString() {
         return "gt.edu.usac.cunoc.ingenieria.civil.bridges.model.Other[ otherId=" + otherId + " ]";
     }
-    
+
 }

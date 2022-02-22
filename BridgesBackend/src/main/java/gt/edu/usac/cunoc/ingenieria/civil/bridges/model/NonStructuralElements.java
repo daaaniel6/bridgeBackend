@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -47,24 +48,24 @@ public class NonStructuralElements implements Serializable {
     private byte[] image;
     
     @JoinColumn(name = "barrier_barrier_id", referencedColumnName = "barrier_id")
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Barrier barrierBarrierId;
     
     @JoinColumn(name = "handrail_railing_handrail_railing_id", referencedColumnName = "handrail_railing_id")
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private HandrailRailing handrailRailingHandrailRailingId;
     
     @JoinColumn(name = "railing_posts_railing_posts_id", referencedColumnName = "railing_posts_id")
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private RailingPosts railingPostsRailingPostsId;
     
-    @OneToMany(mappedBy = "nonStructuralElementsNonStructuralElementsId")
+    @OneToMany(mappedBy = "nonStructuralElementsNonStructuralElementsId", cascade = CascadeType.ALL)
     private List<ProtectionWorks> protectionWorksList;
     
-    @OneToMany(mappedBy = "nonStructuralElementsNonStructuralElementsId")
+    @OneToMany(mappedBy = "nonStructuralElementsNonStructuralElementsId", cascade = CascadeType.ALL)
     private List<Council> councilList;
     
-    @OneToMany(mappedBy = "nonStructuralElementsNonStructuralElementsId")
+    @OneToMany(mappedBy = "nonStructuralElementsNonStructuralElementsId", cascade = CascadeType.ALL)
     private List<SlabAccess> slabAccessList;
     
     @JsonIgnore

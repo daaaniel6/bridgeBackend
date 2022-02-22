@@ -55,7 +55,7 @@ public class ProtectionWorks implements Serializable {
     @Column(name = "type")
     private String type;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
-    @Column(name = "long")
+    @Column(name = "`long`")
     private Double long1;
     @Column(name = "width")
     private Double width;
