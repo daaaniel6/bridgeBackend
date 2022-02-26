@@ -5,10 +5,16 @@
  */
 package gt.edu.usac.cunoc.ingenieria.civil.bridges.repository;
 
+import gt.edu.usac.cunoc.ingenieria.civil.bridges.model.Image;
+import java.util.Optional;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
 /**
  *
  * @author daniel
  */
-public interface ImageRepository {
-    
+@Repository
+public interface ImageRepository extends JpaRepository<Image, Long>{
+    Optional<Image> findByName(String name);
 }

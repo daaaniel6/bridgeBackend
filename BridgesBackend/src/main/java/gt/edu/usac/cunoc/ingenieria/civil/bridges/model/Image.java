@@ -60,6 +60,14 @@ public class Image implements Serializable {
     public Image() {
     }
 
+    public Image(String name, String comment, byte[] image) {
+        this.name = name;
+        this.comment = comment;
+        this.image = image;
+    }
+    
+    
+
     public Image(Long imageId) {
         this.imageId = imageId;
     }

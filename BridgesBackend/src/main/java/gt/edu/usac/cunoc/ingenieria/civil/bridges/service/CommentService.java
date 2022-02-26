@@ -5,10 +5,14 @@
  */
 package gt.edu.usac.cunoc.ingenieria.civil.bridges.service;
 
+import gt.edu.usac.cunoc.ingenieria.civil.bridges.model.Comment;
+
 /**
  *
  * @author daniel
  */
 public interface CommentService {
+    
+    Comment saveInBridge(Long idBridge, Comment comment);
     
 }
