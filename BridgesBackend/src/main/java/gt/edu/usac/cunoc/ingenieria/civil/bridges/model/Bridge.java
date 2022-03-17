@@ -149,7 +149,7 @@ public class Bridge implements Serializable {
     @OneToMany(mappedBy = "bridgeBridgeId",cascade = CascadeType.ALL)
     private List<Stretch> stretchList;
     
-    @OneToMany(mappedBy = "bridgeBridgeId")
+    @OneToMany(mappedBy = "bridgeBridgeId", cascade = CascadeType.ALL)//new cascade
     private List<Image> imageList;
     
     @OneToMany(mappedBy = "bridgeBridgeId")
@@ -158,7 +158,7 @@ public class Bridge implements Serializable {
     @OneToMany(mappedBy = "bridgeBridgeId", cascade = CascadeType.ALL)
     private List<Stapes> stapesList;
     
-    @OneToMany(mappedBy = "bridge")
+    @OneToMany(mappedBy = "bridge", cascade = CascadeType.ALL)//new cascade
     private List<Comment> commentList;
 //    
     

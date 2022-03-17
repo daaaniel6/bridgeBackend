@@ -34,31 +34,8 @@ public class DepartamentServiceImpl implements DepartamentService{
 
     @Override
     @Transactional(readOnly = true)
-    public Page<Departament> findAll(Pageable pageable) {
-        return departamentRepository.findAll(pageable);
-    }
-
-    @Override
-    @Transactional(readOnly = true)
     public Optional<Departament> findById(Integer id) {
         return departamentRepository.findById(id);
-    }
-
-    @Override
-    @Transactional
-    public Departament save(Departament departament) {
-        return departamentRepository.save(departament);
-    }
-
-    @Override
-    @Transactional
-    public void deleteById(Integer id) {
-        departamentRepository.deleteById(id);
-    }
-    
-    @Override
-    public Departament listarPorId(Integer codigo){
-        return departamentRepository.findById(codigo).orElse(null);
     }
     
 }

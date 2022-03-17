@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 import gt.edu.usac.cunoc.ingenieria.civil.bridges.model.Bridge;
 import gt.edu.usac.cunoc.ingenieria.civil.bridges.model.ConcreteRow;
 import gt.edu.usac.cunoc.ingenieria.civil.bridges.model.Council;
+import gt.edu.usac.cunoc.ingenieria.civil.bridges.model.ImageOther;
 import gt.edu.usac.cunoc.ingenieria.civil.bridges.model.ProtectionWorks;
 import gt.edu.usac.cunoc.ingenieria.civil.bridges.model.Stapes;
 import gt.edu.usac.cunoc.ingenieria.civil.bridges.model.Stretch;
@@ -75,6 +76,9 @@ public class BridgeServiceImpl implements BridgeService {
         }
         for (ProtectionWorks protectionWorks : bridge.getNonStructuralElementsNonStructuralElementsId().getProtectionWorksList()) {
             protectionWorks.setNonStructuralElementsNonStructuralElementsId(bridge.getNonStructuralElementsNonStructuralElementsId());
+        }
+        for (ImageOther imageOther : bridge.getOtherOtherId().getImageOtherList()) {
+            imageOther.setOtherOtherId(bridge.getOtherOtherId());
         }
         
         return bridgeRepository.save(bridge);

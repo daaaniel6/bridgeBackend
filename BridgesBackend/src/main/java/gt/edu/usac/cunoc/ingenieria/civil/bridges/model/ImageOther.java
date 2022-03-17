@@ -5,6 +5,7 @@
  */
 package gt.edu.usac.cunoc.ingenieria.civil.bridges.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -50,11 +51,19 @@ public class ImageOther implements Serializable {
     @Lob
     @Column(name = "image")
     private byte[] image;
+
+    @JsonIgnore
     @JoinColumn(name = "other_other_id", referencedColumnName = "other_id")
     @ManyToOne
     private Other otherOtherId;
 
     public ImageOther() {
+    }
+
+    public ImageOther(String name, String comment, byte[] image) {
+        this.name = name;
+        this.comment = comment;
+        this.image = image;
     }
 
     public ImageOther(Long imageOtherId) {
@@ -125,5 +134,5 @@ public class ImageOther implements Serializable {
     public String toString() {
         return "gt.edu.usac.cunoc.ingenieria.civil.bridges.model.ImageOther[ imageOtherId=" + imageOtherId + " ]";
     }
-    
+
 }

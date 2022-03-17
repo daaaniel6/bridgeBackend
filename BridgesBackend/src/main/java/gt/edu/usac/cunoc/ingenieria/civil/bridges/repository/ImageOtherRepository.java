@@ -5,10 +5,15 @@
  */
 package gt.edu.usac.cunoc.ingenieria.civil.bridges.repository;
 
+import gt.edu.usac.cunoc.ingenieria.civil.bridges.model.ImageOther;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
 /**
  *
  * @author daniel
  */
-public interface ImageOtherRepository {
-    
+@Repository
+public interface ImageOtherRepository extends JpaRepository<ImageOther, Long> {
+
 }

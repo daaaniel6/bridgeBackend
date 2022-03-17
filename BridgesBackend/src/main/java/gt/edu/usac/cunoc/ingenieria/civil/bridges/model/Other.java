@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -86,7 +87,7 @@ public class Other implements Serializable {
     @Size(max = 45)
     @Column(name = "extra")
     private String extra;
-    @OneToMany(mappedBy = "otherOtherId")
+    @OneToMany(mappedBy = "otherOtherId", cascade = CascadeType.ALL)
     private List<ImageOther> imageOtherList;
 
     @JsonIgnore

@@ -16,20 +16,9 @@ import org.springframework.data.domain.Pageable;
  */
 
 public interface DepartamentService {
-    public Iterable<Departament> findAll();
 
-    /**
-     * Paginacion desde lado del servidor manda de 10 en 10 o 5 en 5
-     * @param pageable
-     * @return 
-     */
-    public Page<Departament> findAll(Pageable pageable);
+    public Iterable<Departament> findAll();
 
     public Optional<Departament> findById(Integer id);
 
-    public Departament save(Departament departament);
-
-    public void deleteById(Integer id);
-
-    Departament listarPorId(Integer codigo);
 }

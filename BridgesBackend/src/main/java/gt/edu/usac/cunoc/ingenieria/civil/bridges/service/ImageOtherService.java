@@ -5,10 +5,14 @@
  */
 package gt.edu.usac.cunoc.ingenieria.civil.bridges.service;
 
+import gt.edu.usac.cunoc.ingenieria.civil.bridges.model.ImageOther;
+
 /**
  *
  * @author daniel
  */
 public interface ImageOtherService {
+    
+    ImageOther saveInOther(Long idBridge, ImageOther image);
     
 }
